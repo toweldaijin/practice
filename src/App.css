@@ -5,3 +5,7 @@
 main {
   text-align: center;
 }
+
+#search-box {
+  margin: 20px;
+}

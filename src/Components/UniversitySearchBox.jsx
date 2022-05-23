@@ -4,7 +4,8 @@ export const UniversitySearchBox = () => {
     return(
         <>
             <p>大学名で検索</p>
-            <input></input>
+            <input type="search" id="search-box" placeholder="大学名を入力"></input>
+            <button>検索</button>
         </>
     );
 }

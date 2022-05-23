@@ -7,6 +7,7 @@ import { UniversitySearchBox } from './Components/UniversitySearchBox';
 import { UniversitiesListPage } from './UniversitiesListPage';
 import { CountriesListPage } from './Components/CountriesListPage';
 import { Home } from './Components/Home';
+import { Header } from './Components/Header';
 
 
 
@@ -14,10 +15,8 @@ const App = () => {
   return(
     <>
     <Router>
-      <header>
-        <RyugakupediaLogo/>
-        <WriteAreviewButton/>
-      </header>
+      
+     <Header/>
 
       <Switch>
       <main>
@@ -26,15 +25,15 @@ const App = () => {
         <Link to="/CountriesListPage"></Link>
 
         <Switch>
-          <Route path="/" exact>
-            <Home/>
-          </Route>
-          <Route path="/UniversitiesListPage" exact>
-            <UniversitiesListPage />
-          </Route>
-          <Route path="/CountriesListPage" exact>
-            <CountriesListPage/>
-          </Route>
+        <Route path="/" exact>
+          <Home/>
+        </Route>
+        <Route path="/UniversitiesListPage" exact>
+          <UniversitiesListPage />
+        </Route>
+        <Route path="/CountriesListPage" exact>
+          <CountriesListPage/>
+        </Route>
         </Switch>
       </main>
       </Switch>

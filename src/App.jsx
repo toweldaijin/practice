@@ -2,10 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { WriteAreviewButton } from './Components/WriteAReviewsButton';
 import { RyugakupediaLogo } from './Components/RyugakupediaLogo.jsx'
-import { CountrySearchBox } from './Components/CountrySearchBox';
-import { UniversitySearchBox } from './Components/UniversitySearchBox';
-import { UniversitiesListPage } from './UniversitiesListPage';
-import { CountriesListPage } from './Components/CountriesListPage';
+import { UniversitiesSearchPage } from './Components/UniversitiesSearchPage';
+import { CountriesSearchPage } from './Components/CountriesSearchPage';
 import { Home } from './Components/Home';
 import { Header } from './Components/Header';
 
@@ -18,25 +16,28 @@ const App = () => {
       
      <Header/>
 
-      <Switch>
+      
       <main>
         <Link to="/">home</Link>
-        <Link to="/UniversitiesListPage"></Link>
-        <Link to="/CountriesListPage"></Link>
-
-        <Switch>
-        <Route path="/" exact>
-          <Home/>
-        </Route>
-        <Route path="/UniversitiesListPage" exact>
-          <UniversitiesListPage />
-        </Route>
-        <Route path="/CountriesListPage" exact>
-          <CountriesListPage/>
-        </Route>
-        </Switch>
+        <br/>
+        <Link to="/UniversitiesSearchPage">大学で検索</Link>
+        <br/>
+        <Link to="/CountriesSearchPage">国で検索</Link>
       </main>
+      
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/UniversitiesSearchPage" >
+          <UniversitiesSearchPage />
+        </Route>
+        <Route path="/CountriesSearchPage" >
+          <CountriesSearchPage />
+        </Route>
       </Switch>
+      
+      
     </Router>
 
   

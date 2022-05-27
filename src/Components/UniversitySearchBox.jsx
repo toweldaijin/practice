@@ -5,7 +5,7 @@ export const UniversitySearchBox = () => {
         <>
             <p>大学名で検索</p>
             <input type="search" id="search-box" placeholder="大学名を入力"></input>
-            <button>検索</button>
+            <button>探す</button>
         </>
     );
 }

@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import { UniversityList } from "./UniversityListPage";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 export const UniversitiesSearchPage = (props) => {
-    const { setWord, getUniversityData } = props;
+    const { setWord, getUniversityData, university } = props;
     return (
         <>
+        <Router>
         <Grid
             container
             spacing={0}
@@ -25,14 +29,28 @@ export const UniversitiesSearchPage = (props) => {
                 >
             </input>
             {/* 送信ボタン */}
-            <button
-                onClick={getUniversityData}
-                type="submit"
-            >
-                検索
-            </button>
+            <Link to="/UniversitiesSearchPage/UniversityListPage">
+                <Box m={3}>
+                    <button
+                        onClick={getUniversityData}
+                        type="submit"
+                        >
+                        検索
+                    </button> 
+                </Box>
+            </Link>
+            
         </form>
         </Grid>
+
+        <Switch>
+            <Route path="/UniversitiesSearchPage/UniversityListPage">
+                <UniversityList university={university}/>
+            </Route>
+        </Switch>
+
+        </Router>
+
         </>
     );
 }

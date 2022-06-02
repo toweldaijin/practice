@@ -50,7 +50,7 @@ const App = () => {
         <br/>
         <Link to="/UniversitiesSearchPage">
           <Box m={3}>
-            <Button variant="contained" color="warning">大学名で検索</Button>
+            <Button variant="contained" color="warning">大学名で検索(英字表記)</Button>
           </Box>
         </Link>
         <br/>
@@ -59,8 +59,7 @@ const App = () => {
             <Button variant="contained" color="warning">国名で検索</Button>
           </Box>
         </Link>
-        <UniversityList university={university}/>
-  
+        
    
       </Grid> 
       </main>
@@ -69,9 +68,20 @@ const App = () => {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/UniversitiesSearchPage" >
-          <UniversitiesSearchPage setWord={setWord} getUniversityData={getUniversityData}/>
-        </Route>
+        <Route 
+          path="/UniversitiesSearchPage" 
+          render={({match: { url }}) => (
+            <Switch>
+              <Route  exact path={url}>
+                <UniversitiesSearchPage/>
+              </Route>
+              <Route  path={`${url}/UniversityListPage`}>
+                <UniversityList setWord={setWord} getUniversityData={getUniversityData}/>
+              </Route>
+            </Switch>
+          )} />
+          
+        
         <Route path="/CountriesSearchPage" >
           <CountriesSearchPage />
         </Route>

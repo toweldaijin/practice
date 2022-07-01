@@ -1,5 +1,5 @@
 import React from "react";
-import { RyugakupediaLogo } from "./RyugakupediaLogo";
+import { RyugakupediaLogo } from "./CompletedPageImage";
 import { WriteAreviewButton } from "./WriteAReviewsButton";
 
 const headerStyle = {

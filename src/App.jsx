@@ -2,9 +2,10 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+import countryList from 'react-select-country-list';
 
 const years = [
   {
@@ -90,12 +91,18 @@ const highschools = [
  const App = () => {
 
   const [year, setYear] = useState('before2012');
-  const handleChange1 = (event) => {
+  const yearHandleChange = (event) => {
     setYear(event.target.value);
   };
 
+  const [country, setCountry] = useState('Japan');
+  const countries = useMemo(() => countryList().getData(), []);
+  const countryHandleChange = (event) => {
+    setCountry(event.target.value);
+  };
+
   const [highschool, setHighschool] = useState('privateInCapitalArea');
-  const handleChange4 = (event) => {
+  const highschoolHandleChange = (event) => {
     setHighschool(event.target.value);
   };
 
@@ -108,7 +115,7 @@ const highschools = [
           select
           label="Select"
           value={year}
-          onChange={handleChange1}
+          onChange={yearHandleChange}
           helperText="受験年度を選んでください"
         >
           {years.map((option) => (
@@ -117,6 +124,17 @@ const highschools = [
             </MenuItem>
           ))}
         </TextField>
+      
+      <h2>大学のある国</h2>
+        <TextField
+          id="outlined-select-highschool"
+          select
+          label="Select"
+          value={countries}
+          onChange={countryHandleChange}
+          helperText="国を選んでください"
+        >
+          </TextField>
 
       <h2>出身高校</h2>
        <TextField
@@ -124,7 +142,7 @@ const highschools = [
           select
           label="Select"
           value={highschool}
-          onChange={handleChange4}
+          onChange={highschoolHandleChange}
           helperText="出身高校の分類を選んでください"
         >
           {highschools.map((option) => (

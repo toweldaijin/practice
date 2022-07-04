@@ -6,6 +6,9 @@ import React, { useState, useMemo } from 'react'
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import countryList from 'react-select-country-list';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const years = [
   {
@@ -90,21 +93,35 @@ const highschools = [
 
  const App = () => {
 
+  /* 受験年度 */
   const [year, setYear] = useState('before2012');
   const yearHandleChange = (event) => {
     setYear(event.target.value);
   };
 
+  /* 国 */
   const [country, setCountry] = useState('Japan');
   const countries = useMemo(() => countryList().getData(), []);
   const countryHandleChange = (event) => {
     setCountry(event.target.value);
   };
 
+  /* 進学大学 */
   const [highschool, setHighschool] = useState('privateInCapitalArea');
   const highschoolHandleChange = (event) => {
     setHighschool(event.target.value);
   };
+
+  const [agent, setAgent] = useState('利用した')
+  const agentHandlechange = (event) => {
+    setAgent(event.target.value);
+  }
+
+  /* 奨学金 */
+  const [scholarship, setScholarship] = useState('利用した')
+  const scholarshipHandlechange = (event) => {
+    setScholarship(event.target.value);
+  }
 
   return(
     
@@ -125,17 +142,26 @@ const highschools = [
           ))}
         </TextField>
       
+      <h2>大学名</h2>
+        <TextField id="universityName"   helperText="大学名を入力してください" />
+
       <h2>大学のある国</h2>
         <TextField
           id="outlined-select-highschool"
           select
           label="Select"
-          value={countries}
+          value={country}
           onChange={countryHandleChange}
           helperText="国を選んでください"
         >
-          </TextField>
+          {countries.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
 
+      
       <h2>出身高校</h2>
        <TextField
           id="outlined-select-highschool"
@@ -152,7 +178,62 @@ const highschools = [
           ))}
         </TextField>
 
+      <h2>留学理由・きっかけについて教えてください</h2>
+        <TextField id="reason" />
         
+      <h2>他の合格校を教えてください</h2>
+        <TextField id="otherUniversity" />
+
+    <div>
+      <h2>外部テストスコア(SAT・ACT・共通テストなど)</h2>
+        <TextField id="testScore" />
+      <h2>対策方法</h2>
+        <TextField id="TipsOfTestScore" />
+    </div>
+
+    <div>
+      <h2>語学テストスコア(IELTS・TOEFLなど)</h2>
+        <TextField id="englishTestScore" />
+      <h2>対策方法</h2>
+        <TextField id="TipsOfEnglishTestScore" />
+    </div>
+
+      <h2>GPA・評定</h2>
+          <TextField id="GPA" />
+      
+      <h2>エッセイの内容を教えてください</h2>
+          <TextField id="essay" />
+
+      <h2>周囲からの反対はありましたか？あった場合、どのように説得しましたか？</h2>
+          <TextField id="oppositeFromParents" />
+
+      <h2>留学エージェントや留学専門塾は利用しましたか？</h2>
+          <RadioGroup
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={agent}
+            onChange={agentHandlechange}
+          >
+            <FormControlLabel value="Yes" control={<Radio />} label="利用した" />
+            <FormControlLabel value="No" control={<Radio />} label="利用しなかった" />
+          </RadioGroup>
+
+      <h2>出願までのスケジュールを教えてください</h2>
+        <TextField id="reason" helperText="(例)高3の4月~7月スコアメイク 6月～10月エッセイ執筆 10月推薦書依頼" />
+    <div>
+      <h2>給付型の奨学金は受給しましたか？</h2>
+            <RadioGroup
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+              value={scholarship}
+              onChange={scholarshipHandlechange}
+            >
+              <FormControlLabel value="Yes" control={<Radio />} label="利用した" />
+              <FormControlLabel value="No" control={<Radio />} label="利用しなかった" />
+            </RadioGroup>
+      <h2>【任意】奨学金の金額や給付元(大学からや財団からなど)</h2>
+        <TextField id="scholarshipFoundation" />
+    </div>
    </>
   );
 }

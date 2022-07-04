@@ -126,114 +126,160 @@ const highschools = [
   return(
     
    <>
-      <h2>受験年度</h2>
-       <TextField
-          id="outlined-select-years"
-          select
-          label="Select"
-          value={year}
-          onChange={yearHandleChange}
-          helperText="受験年度を選んでください"
-        >
-          {years.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-      
-      <h2>大学名</h2>
-        <TextField id="universityName"   helperText="大学名を入力してください" />
 
-      <h2>大学のある国</h2>
-        <TextField
-          id="outlined-select-highschool"
-          select
-          label="Select"
-          value={country}
-          onChange={countryHandleChange}
-          helperText="国を選んでください"
-        >
-          {countries.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-
-      
-      <h2>出身高校</h2>
-       <TextField
-          id="outlined-select-highschool"
-          select
-          label="Select"
-          value={highschool}
-          onChange={highschoolHandleChange}
-          helperText="出身高校の分類を選んでください"
-        >
-          {highschools.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-
-      <h2>留学理由・きっかけについて教えてください</h2>
-        <TextField id="reason" />
-        
-      <h2>他の合格校を教えてください</h2>
-        <TextField id="otherUniversity" />
-
-    <div>
-      <h2>外部テストスコア(SAT・ACT・共通テストなど)</h2>
-        <TextField id="testScore" />
-      <h2>対策方法</h2>
-        <TextField id="TipsOfTestScore" />
-    </div>
-
-    <div>
-      <h2>語学テストスコア(IELTS・TOEFLなど)</h2>
-        <TextField id="englishTestScore" />
-      <h2>対策方法</h2>
-        <TextField id="TipsOfEnglishTestScore" />
-    </div>
-
-      <h2>GPA・評定</h2>
-          <TextField id="GPA" />
-      
-      <h2>エッセイの内容を教えてください</h2>
-          <TextField id="essay" />
-
-      <h2>周囲からの反対はありましたか？あった場合、どのように説得しましたか？</h2>
-          <TextField id="oppositeFromParents" />
-
-      <h2>留学エージェントや留学専門塾は利用しましたか？</h2>
-          <RadioGroup
-            aria-labelledby="demo-controlled-radio-buttons-group"
-            name="controlled-radio-buttons-group"
-            value={agent}
-            onChange={agentHandlechange}
+      <div>
+        <h2>受験年度</h2>
+         <TextField
+            id="outlined-select-years"
+            select
+            label="Select"
+            value={year}
+            onChange={yearHandleChange}
+            helperText="受験年度を選んでください"
           >
-            <FormControlLabel value="Yes" control={<Radio />} label="利用した" />
-            <FormControlLabel value="No" control={<Radio />} label="利用しなかった" />
-          </RadioGroup>
+            {years.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+      </div>
+      
+      <div>
+        <h2>大学名</h2>
+          <TextField id="universityName"   helperText="大学名を入力してください" />
+      </div>
 
-      <h2>出願までのスケジュールを教えてください</h2>
-        <TextField id="reason" helperText="(例)高3の4月~7月スコアメイク 6月～10月エッセイ執筆 10月推薦書依頼" />
-    <div>
-      <h2>給付型の奨学金は受給しましたか？</h2>
+      <div>
+        <h2>大学のある国</h2>
+          <TextField
+            id="outlined-select-highschool"
+            select
+            label="Select"
+            value={country}
+            onChange={countryHandleChange}
+            helperText="国を選んでください"
+          >
+            {countries.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+      </div>
+
+      
+      <div>
+        <h2>出身高校</h2>
+         <TextField
+            id="outlined-select-highschool"
+            select
+            label="Select"
+            value={highschool}
+            onChange={highschoolHandleChange}
+            helperText="出身高校の分類を選んでください"
+          >
+            {highschools.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+      </div>
+
+      <div>
+        <h2>留学理由・きっかけについて教えてください</h2>
+          <TextField id="reason" />
+      </div>
+        
+      <div>
+        <h2>他の合格校を教えてください</h2>
+          <TextField id="otherUniversity" />
+      </div>
+
+      <div>
+        <h2>外部テストスコア(SAT・ACT・共通テストなど)</h2>
+          <TextField id="testScore" />
+        <h2>対策方法</h2>
+          <TextField id="TipsOfTestScore" />
+      </div>
+
+      <div>
+        <h2>語学テストスコア(IELTS・TOEFLなど)</h2>
+        <TextField id="englishTestScore" />
+        <h2>対策方法</h2>
+        <TextField id="TipsOfEnglishTestScore" />
+      </div>
+
+      <div>
+        <h2>GPA・評定</h2>
+            <TextField id="GPA" />
+      </div>
+      
+      <div>
+        <h2>エッセイの内容を教えてください</h2>
+            <TextField id="essay" />
+      </div>
+
+      <div>
+        <h2>周囲からの反対はありましたか？あった場合、どのように説得しましたか？</h2>
+            <TextField id="oppositeFromParents" />
+      </div>
+
+      <div>
+        <h2>留学エージェントや留学専門塾は利用しましたか？</h2>
             <RadioGroup
               aria-labelledby="demo-controlled-radio-buttons-group"
               name="controlled-radio-buttons-group"
-              value={scholarship}
-              onChange={scholarshipHandlechange}
+              value={agent}
+              onChange={agentHandlechange}
             >
               <FormControlLabel value="Yes" control={<Radio />} label="利用した" />
               <FormControlLabel value="No" control={<Radio />} label="利用しなかった" />
             </RadioGroup>
-      <h2>【任意】奨学金の金額や給付元(大学からや財団からなど)</h2>
-        <TextField id="scholarshipFoundation" />
-    </div>
+      </div>
+
+      <div>
+        <h2>出願までのスケジュールを教えてください</h2>
+          <TextField id="reason" helperText="(例)高3の4月~7月スコアメイク 6月～10月エッセイ執筆 10月推薦書依頼" />
+      </div>
+
+    
+      <div>
+        <h2>給付型の奨学金は受給しましたか？</h2>
+                <RadioGroup
+                  aria-labelledby="demo-controlled-radio-buttons-group"
+                  name="controlled-radio-buttons-group"
+                  value={scholarship}
+                  onChange={scholarshipHandlechange}
+                >
+                  <FormControlLabel value="Yes" control={<Radio />} label="利用した" />
+                  <FormControlLabel value="No" control={<Radio />} label="利用しなかった" />
+                </RadioGroup>
+        <h2>【任意】奨学金の金額や給付元(大学からや財団からなど)</h2>
+            <TextField id="scholarshipFoundation" />
+      </div>
+      
+      <div>
+        <h2>出願準備の中で失敗談や後悔していることがあれば教えてください</h2>
+          <TextField id="regret" />
+      </div>
+
+      <div>
+        <h2>大学選びで重視したことを教えてください</h2>
+          <TextField id="tipsOfCollegeDecision" />
+      </div>
+
+      <div>
+        <h2>【任意】後輩たちが質問やメッセージを送ってもOKなSNSアカウントを教えてください</h2>
+          <TextField id="SNSAccount" />
+      </div>
+
+      <div>
+        <h2>最後に一言お願いします！</h2>
+          <TextField id="Message" />
+      </div>
+    
    </>
   );
 }

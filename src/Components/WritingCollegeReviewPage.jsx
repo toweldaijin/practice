@@ -90,7 +90,7 @@ const WritingCollegeReviewPage = () => {
       
       
       
-       const App = () => {
+       const writingCollegeReviewPage = () => {
       
         /* 受験年度 */
         const [year, setYear] = useState('before2012');

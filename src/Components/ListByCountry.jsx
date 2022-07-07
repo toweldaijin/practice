@@ -1,12 +1,15 @@
 import React from 'react'
 
-const ListByCountry = () => {
+const ListByCountry = ({fetchDataByCountry}) => {
   return (
     <div>
         <div className='unversity-wrapper'>
-            <div className="universty-name">
-                <h3></h3>
-            </div>
+              {fetchDataByCountry.map((data) => (
+                <div className="universty-name">
+                  <h3>{data.name}</h3>
+                </div>
+              ))}
+            
         </div>
     </div>
   )

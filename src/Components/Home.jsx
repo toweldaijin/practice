@@ -1,11 +1,50 @@
-import React from "react";
-import TextField from '@mui/material/TextField';
+import React, { useRef, useState } from "react";
 import HomeImageUrl from './HomeImageUrl.png';
-import Button from '@mui/material/Button';
 import ListByCountry from "./ListByCountry";
-
+import { ListByUniversity } from "./ListByUniversity";
 
 export const Home = (props) => {
+
+  /* const [fetchDataByCountry, setFetchDataByCountry] = useState([]); */
+  const [fetchDataByUniversity, setFetchDataByUniversity] = useState([]);
+  const ref = useRef();
+
+  /* inputに文字入力後、エンターしたとき */
+  /* const handleSubmitBycountry = (event) => {
+    event.preventDefault();
+    console.log(ref.current.value);
+
+  /* APIのURL */
+  /* const endpointUrlByCountry = `http://universities.hipolabs.com/search?country=${ref.current.value}` */
+
+  /* APIを叩く */
+  /* fetch(endpointUrlByCountry)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+      setFetchDataByCountry(data);
+    })
+  } */ 
+
+  const handleSubmitByUniversity = (event) => {
+    event.preventDefault();
+    console.log(ref.current.value);
+
+  /* APIのURL */
+  const endpointUrlByUniversity = `http://universities.hipolabs.com/search?name=${ref.current.value}`
+
+  /* APIを叩く */
+  fetch(endpointUrlByUniversity)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+      setFetchDataByUniversity(data);
+  })
+  }
 
     return(
       
@@ -28,16 +67,18 @@ export const Home = (props) => {
             }}
     >
       <p>国で検索</p>
-      <form>
-        <input type="text" placeholder="国名を入力"></input>
-      </form>
+      {/* <form onSubmit={(event) => handleSubmitBycountry(event)}>
+        <input type="text" placeholder="国名を入力" ref={ref}></input>
+      </form> */}
       
       <p>大学名で検索</p>
-      <TextField id="SearchByUniversity" />
-      <Button variant="contained" type="submit">検索</Button>
+      <form onSubmit={(event) => handleSubmitByUniversity(event)}>
+        <input type="text" placeholder="大学名を入力" ref={ref}></input>
+      </form>
     </div>
 
-    <ListByCountry></ListByCountry>
+    {/* <ListByCountry fetchDataByCountry={fetchDataByCountry}></ListByCountry> */}
+    <ListByUniversity fetchDataByUniversity={fetchDataByUniversity}></ListByUniversity>
    </>
 
      
